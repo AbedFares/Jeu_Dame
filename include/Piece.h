@@ -9,7 +9,7 @@ class Piece
 		Piece();
 		Piece(int,int,char);
 		virtual ~Piece();
-		void afficher();
+		virtual void afficher();
 
 	protected:
 		int rangee;

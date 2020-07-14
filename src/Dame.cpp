@@ -10,14 +10,17 @@ Dame::~Dame()
 	//dtor
 }
 void Dame::initialiser(){
+	for (int i=0;i<10;i++)
+		for (int j=0;j<10;j++)
+			damier[i][j]=new Piece(i,j,'v');
 	for (int i=0;i<10;i+=2){
 		for (int j=0;j<10;j++){
 			if (j!=4 && j!=5){
 				if (j<=3){
-					damier[i][j]=new Piece(i,j,'n');
+					damier[j][i]=new Pion(j,i,'n');
 				}
 				else{
-					damier[i][j]=new Piece(i,j,'b');
+					damier[j][i]=new Pion(j,i,'b');
 				}
 			}
 		}

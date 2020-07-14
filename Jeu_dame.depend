@@ -3,16 +3,61 @@
 	<iostream>
 	"Dame.h"
 
-1594751364 c:\users\elabed\documents\jeu_dame\include\dame.h
+1594763331 c:\users\elabed\documents\jeu_dame\include\dame.h
 	"Piece.h"
+	"Pion.h"
 	<iostream>
 
-1594751363 c:\users\elabed\documents\jeu_dame\include\piece.h
+1594763518 c:\users\elabed\documents\jeu_dame\include\piece.h
 	<iostream>
 
 1594751206 source:c:\users\elabed\documents\jeu_dame\src\piece.cpp
 	"Piece.h"
 
-1594751477 source:c:\users\elabed\documents\jeu_dame\src\dame.cpp
+1594763305 source:c:\users\elabed\documents\jeu_dame\src\dame.cpp
 	"Dame.h"
+
+1594763352 c:\users\elabed\documents\jeu_dame\include\pion.h
+	<iostream>
+	<Piece.h>
+
+1594763143 source:c:\users\elabed\documents\jeu_dame\src\queen.cpp
+	"Queen.h"
+
+1594763143 c:\users\elabed\documents\jeu_dame\include\queen.h
+	<Piece.h>
+
+1594763450 source:c:\users\elabed\documents\jeu_dame\src\pion.cpp
+	"Pion.h"
+
+1594751302 source:c:\users\elabed\documents\stage_ete\jeu_dame\main.cpp
+	<iostream>
+	"Dame.h"
+
+1594763331 c:\users\elabed\documents\stage_ete\jeu_dame\include\dame.h
+	"Piece.h"
+	"Pion.h"
+	<iostream>
+
+1594763518 c:\users\elabed\documents\stage_ete\jeu_dame\include\piece.h
+	<iostream>
+
+1594763352 c:\users\elabed\documents\stage_ete\jeu_dame\include\pion.h
+	<iostream>
+	<Piece.h>
+
+1594763687 source:c:\users\elabed\documents\stage_ete\jeu_dame\src\dame.cpp
+	"Dame.h"
+
+1594751206 source:c:\users\elabed\documents\stage_ete\jeu_dame\src\piece.cpp
+	"Piece.h"
+
+1594763450 source:c:\users\elabed\documents\stage_ete\jeu_dame\src\pion.cpp
+	"Pion.h"
+
+1594763143 source:c:\users\elabed\documents\stage_ete\jeu_dame\src\queen.cpp
+	"Queen.h"
+
+1594763143 c:\users\elabed\documents\stage_ete\jeu_dame\include\queen.h
+	<Piece.h>
 

@@ -1,6 +1,7 @@
 #ifndef DAME_H
 #define DAME_H
 #include "Piece.h"
+#include "Pion.h"
 #include <iostream>
 using namespace std;
 class Dame
