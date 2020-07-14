@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1594751302 source:c:\users\elabed\documents\jeu_dame\main.cpp
+	<iostream>
+	"Dame.h"
+
+1594751364 c:\users\elabed\documents\jeu_dame\include\dame.h
+	"Piece.h"
+	<iostream>
+
+1594751363 c:\users\elabed\documents\jeu_dame\include\piece.h
+	<iostream>
+
+1594751206 source:c:\users\elabed\documents\jeu_dame\src\piece.cpp
+	"Piece.h"
+
+1594751477 source:c:\users\elabed\documents\jeu_dame\src\dame.cpp
+	"Dame.h"
+
