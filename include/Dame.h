@@ -13,8 +13,8 @@ class Dame
 		void initialiser();
 		void afficher();
 		int verif_dep(string ,string );
-
-	protected:
+        bool test_format(string);
+    protected:
 
 	private:
 		Piece* damier[10][10];

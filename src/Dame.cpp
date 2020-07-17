@@ -73,3 +73,16 @@ int Dame::verif_dep(string depart,string dest){
 		return damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest);
 	return 0;
 }
+bool Dame::test_format ( string ch)
+{
+    if (ch.length()==2)
+         {if (ch[0]>='a' && ch[0]<='j'&& ch[1]>='1'&& ch[1]<='9')
+             return true ;else return false;}
+
+    else if (ch.length()==3)
+            {if (ch[0]>='a' && ch[0]<='j'&& ch[1]=='1'&& ch[2]=='0')
+             return true ;
+             else return false;}
+
+    else return false;
+}
