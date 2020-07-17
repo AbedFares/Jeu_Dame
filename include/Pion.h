@@ -11,7 +11,8 @@ class Pion : public Piece
 		Pion(int,int,char);
 		virtual ~Pion();
 		void afficher(){cout<<"P";}
-
+		int verif_dep(Piece* [10][10],int,int,int,int);
+		char getcouleur(){return couleur;};
 	protected:
 
 	private:

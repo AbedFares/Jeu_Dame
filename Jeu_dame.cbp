@@ -34,11 +34,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Damier.h" />
+		<Unit filename="include/Dame.h" />
 		<Unit filename="include/Piece.h" />
+		<Unit filename="include/Pion.h" />
+		<Unit filename="include/Queen.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Damier.cpp" />
+		<Unit filename="src/Dame.cpp" />
 		<Unit filename="src/Piece.cpp" />
+		<Unit filename="src/Pion.cpp" />
+		<Unit filename="src/Queen.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

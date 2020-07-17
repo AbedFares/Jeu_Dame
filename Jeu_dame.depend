@@ -34,15 +34,16 @@
 	<iostream>
 	"Dame.h"
 
-1594763331 c:\users\elabed\documents\stage_ete\jeu_dame\include\dame.h
+1594969933 c:\users\elabed\documents\stage_ete\jeu_dame\include\dame.h
 	"Piece.h"
 	"Pion.h"
 	<iostream>
+	<string>
 
-1594763518 c:\users\elabed\documents\stage_ete\jeu_dame\include\piece.h
+1594972405 c:\users\elabed\documents\stage_ete\jeu_dame\include\piece.h
 	<iostream>
 
-1594763352 c:\users\elabed\documents\stage_ete\jeu_dame\include\pion.h
+1594972361 c:\users\elabed\documents\stage_ete\jeu_dame\include\pion.h
 	<iostream>
 	<Piece.h>
 
@@ -58,6 +59,6 @@
 1594763143 source:c:\users\elabed\documents\stage_ete\jeu_dame\src\queen.cpp
 	"Queen.h"
 
-1594763143 c:\users\elabed\documents\stage_ete\jeu_dame\include\queen.h
+1594972359 c:\users\elabed\documents\stage_ete\jeu_dame\include\queen.h
 	<Piece.h>
 

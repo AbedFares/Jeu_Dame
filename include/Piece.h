@@ -10,6 +10,8 @@ class Piece
 		Piece(int,int,char);
 		virtual ~Piece();
 		virtual void afficher();
+		virtual char getcouleur(){return couleur;};
+		virtual int verif_dep(Piece* damier[10][10],int a,int b,int c,int d){return 0;};
 
 	protected:
 		int rangee;

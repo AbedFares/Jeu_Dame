@@ -9,6 +9,7 @@ class Queen : public Piece
 	public:
 		Queen();
 		virtual ~Queen();
+		char getcouleur(){return couleur;};
 
 	protected:
 

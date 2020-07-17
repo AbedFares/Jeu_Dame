@@ -3,6 +3,7 @@
 #include "Piece.h"
 #include "Pion.h"
 #include <iostream>
+#include <string>
 using namespace std;
 class Dame
 {
@@ -11,6 +12,7 @@ class Dame
 		virtual ~Dame();
 		void initialiser();
 		void afficher();
+		int verif_dep(string ,string );
 
 	protected:
 
