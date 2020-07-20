@@ -10,7 +10,7 @@ class Queen : public Piece
 		Queen();
 		virtual ~Queen();
 		char getcouleur(){return couleur;};
-
+        int verif_dep(Piece* [10][10],int,int,int,int);
 	protected:
 
 	private:
