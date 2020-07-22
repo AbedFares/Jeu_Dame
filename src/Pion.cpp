@@ -11,6 +11,24 @@ Pion::~Pion()
 {
 	//dtor
 }
+
+void Pion::afficher(){
+	if (this->getcouleur()=='b')
+	{
+		HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole,1);
+		cout<<"P";
+		SetConsoleTextAttribute(hConsole,7);
+	}
+	else if (this->getcouleur()=='n')
+	{
+		HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole,4);
+		cout<<"P";
+		SetConsoleTextAttribute(hConsole,7);
+	}
+}
+
 int Pion::verif_dep(Piece* damier[10][10],int l_dep,int c_dep,int l_dest,int c_dest){
 // 0:deplacement illegale // 1:deplacement normal // 2:deplacement avec capture
 	if (damier[l_dep][c_dep]->getcouleur()=='n'){

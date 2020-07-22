@@ -14,10 +14,16 @@ class Dame
 		void afficher();
 		int verif_dep(string ,string );
         bool test_format(string);
+        bool verif_capt(string );
+        void mise_jour(string,string);
+        bool nulle();
+        int termine();
     protected:
 
 	private:
 		Piece* damier[10][10];
+		static int nbre_coup;
+		static int sans_capt;
 };
 
 #endif // DAME_H
