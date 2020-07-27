@@ -120,20 +120,45 @@ void Dame::mise_jour(string depart,string dest){
 		ligne_dest=58 - (int) dest[1];
 	}
 	if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==1){
-			sans_capt++;
+		//Dame::sans_capt++;
 		damier[ligne_dest][col_dest]=damier[ligne_depart][col_depart];
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 	}else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==2){
-		sans_capt=0;
+		//sans_capt=0;
 		damier[ligne_dest][col_dest]=damier[ligne_depart][col_depart];
 		damier[(ligne_depart+ligne_dest)/2][(col_depart+col_dest)/2]=new Piece((ligne_depart+ligne_dest)/2,(col_depart+col_dest)/2,'v');
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 	}
 }
 bool Dame::nulle(){
-	return (sans_capt==10);
+	//return (sans_capt==10);
 }
 int Dame::termine(){
 //0:partie non encore termine//1: blanc gagne //2:noir gagne
-return 0;
+bool noir=false;bool blanc=false;
+int i,j;
+while (i<10 && j<10 && (noir==false || blanc==false))
+{
+   if (damier[i][j]->getcouleur()=='b')
+   {
+       blanc=true;
+   }
+ if (damier[i][j]->getcouleur()=='n')
+ {
+     noir=true;
+ }
+ if (j==9)
+    i++;
+ else j++;
+
+}
+if (i==10 && j==10)
+    return  0;
+    else if (noir==true)
+    return 2;
+    else if(noir==false)
+    return 1;
+else  ;
+
+
 }
