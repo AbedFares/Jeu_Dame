@@ -11,6 +11,10 @@ Queen::~Queen()
 	//dtor
 }
 
+Queen::Queen(int lig, int col, char c):Piece(lig,col,c){
+
+}
+
 void Queen::afficher(){
 	if (this->getcouleur()=='b')
 	{
@@ -75,3 +79,32 @@ int Queen::verif_dep(Piece* damier[10][10],int l_dep,int c_dep,int l_dest,int c_
 	}
 }
 else return 0;}
+
+
+
+
+bool Queen::verif_capt(Piece* damier[10][10],int lig_dep,int col_dep){
+	if (damier[lig_dep][col_dep]->getcouleur()=='n' || damier[lig_dep][col_dep]->getcouleur()=='b'){
+		if (lig_dep+2<=9 && lig_dep+2 >=0  && col_dep-2>=0 && col_dep-2<=9 ){
+			if (damier[lig_dep][col_dep]->verif_dep(damier,lig_dep,col_dep,lig_dep+2,col_dep-2)==2 ){
+				return true;
+			}
+		}
+		if (lig_dep+2<=9 && lig_dep+2 >=0  && col_dep+2<=9 && col_dep+2>=0 ){
+			if (damier[lig_dep][col_dep]->verif_dep(damier,lig_dep,col_dep,lig_dep+2,col_dep+2)==2 ){
+				return true;
+			}
+		}
+		if (lig_dep-2<=9 && lig_dep-2 >=0 && col_dep-2>=0 && col_dep-2<=9 ){
+			if (damier[lig_dep][col_dep]->verif_dep(damier,lig_dep,col_dep,lig_dep-2,col_dep-2)==2 ){
+				return true;
+			}
+		}
+		if (lig_dep-2<=9 && lig_dep-2 >=0  && col_dep+2<=9 && col_dep+2>=0 ){
+			if (damier[lig_dep][col_dep]->verif_dep(damier,lig_dep,col_dep,lig_dep-2,col_dep+2)==2 ){
+				return true;
+			}
+		}
+	}
+	return false;
+}
