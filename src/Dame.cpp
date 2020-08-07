@@ -153,6 +153,4 @@ if(noir == true && blanc == false)
     return 2;
 if (noir==true && blanc==true)
     return 0;
-
-
 }
