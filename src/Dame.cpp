@@ -136,29 +136,23 @@ bool Dame::nulle(){
 int Dame::termine(){
 //0:partie non encore termine//1: blanc gagne //2:noir gagne
 bool noir=false;bool blanc=false;
-int i,j;
-while (i<10 && j<10 && (noir==false || blanc==false))
+for (int i=0;i<10;i++)
+{ for (int j=0;j<10;j++)
 {
-   if (damier[i][j]->getcouleur()=='b')
-   {
-       blanc=true;
-   }
- if (damier[i][j]->getcouleur()=='n')
- {
-     noir=true;
- }
- if (j==9)
-    i++;
- else j++;
+    if (damier[i][j]->getcouleur()=='b')
+        blanc=true;
+    if (damier[i][j]->getcouleur() =='n')
+        noir=true;
 
 }
-if (i==10 && j==10)
-    return  0;
-    else if (noir==true)
-    return 2;
-    else if(noir==false)
+
+}
+if (noir == false && blanc ==true)
     return 1;
-else  ;
+if(noir == true && blanc == false)
+    return 2;
+if (noir==true && blanc==true)
+    return 0;
 
 
 }
