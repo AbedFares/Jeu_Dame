@@ -80,8 +80,6 @@ int Queen::verif_dep(Piece* damier[10][10],int l_dep,int c_dep,int l_dest,int c_
 }
 else return 0;}
 
-<<<<<<< HEAD
-=======
 
 
 
@@ -110,4 +108,3 @@ bool Queen::verif_capt(Piece* damier[10][10],int lig_dep,int col_dep){
 	}
 	return false;
 }
->>>>>>> 3a51fa3faa23d6c88db7df0b1f1bbfb21801d2ed
