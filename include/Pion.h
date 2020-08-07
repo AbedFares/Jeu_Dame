@@ -13,6 +13,7 @@ class Pion : public Piece
 		virtual ~Pion();
 		void afficher();
 		int verif_dep(Piece* [10][10],int,int,int,int);
+        bool verif_capt(Piece* [10][10],int,int);
 		char getcouleur(){return couleur;};
 	protected:
 

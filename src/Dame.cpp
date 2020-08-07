@@ -1,5 +1,6 @@
 #include "Dame.h"
-
+int Dame::nbre_coup=0;
+int Dame::sans_capt=0;
 Dame::Dame()
 {
 	//ctor
@@ -74,6 +75,15 @@ int Dame::verif_dep(string depart,string dest){
 	}else{
 		ligne_depart=58 - (int) depart[1];
 	}
+	char c=damier[ligne_depart][col_depart]->getcouleur();
+	if (Dame::nbre_coup % 2==0 && c=='n'){
+			cout<<"c'est le tour du blanc"<<endl;
+		return 0;
+	}
+	if (Dame::nbre_coup % 2==1 && c=='b'){
+		cout<<"c'est le tour du noir"<<endl;
+		return 0;
+	}
 	int col_dest=(int) dest[0] - 97;
 	int ligne_dest;
 	if (dest.length()==3){
@@ -84,8 +94,9 @@ int Dame::verif_dep(string depart,string dest){
 	if (damier[ligne_depart][col_depart]->getcouleur()=='v'){
 		cout<<"La case de depart est vide!"<<endl;
 		return 0;
-	}else
+	}else {
 		return damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest);
+	}
 	return 0;
 }
 bool Dame::test_format ( string ch)
@@ -99,10 +110,17 @@ bool Dame::test_format ( string ch)
              return true ;
              else return false;}
 
-    else return false;
+    else {return false;cout<<"format donne est invalide"<<endl;}
 }
-bool Dame::verif_capt(string s){
-	return false;
+bool Dame::verif_capt(string p){
+	int col_depart=(int) p[0] - 97;
+	int ligne_depart;
+	if (p.length()==3){
+		ligne_depart=0;
+	}else{
+		ligne_depart=58 - (int) p[1];
+	}
+	return damier[col_depart][ligne_depart]->verif_capt(damier,col_depart,ligne_depart);
 }
 void Dame::mise_jour(string depart,string dest){
 	int col_depart=(int) depart[0] - 97;
@@ -120,24 +138,45 @@ void Dame::mise_jour(string depart,string dest){
 		ligne_dest=58 - (int) dest[1];
 	}
 	if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==1){
-		//Dame::sans_capt++;
+		cout<<"dep norm du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		Dame::sans_capt++;
 		damier[ligne_dest][col_dest]=damier[ligne_depart][col_depart];
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 	}else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==2){
-		//sans_capt=0;
+		cout<<"capture du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		Dame::sans_capt=0;
 		damier[ligne_dest][col_dest]=damier[ligne_depart][col_depart];
 		damier[(ligne_depart+ligne_dest)/2][(col_depart+col_dest)/2]=new Piece((ligne_depart+ligne_dest)/2,(col_depart+col_dest)/2,'v');
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
+		//return 2;
+	} else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==3){
+		cout<<"promo norm du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		Dame::sans_capt++;
+		damier[ligne_dest][col_dest]=new Queen(ligne_depart,col_depart,damier[ligne_depart][col_depart]->getcouleur());
+		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
+	} else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==4){
+		cout<<"promo avec capt du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		Dame::sans_capt=0;
+		damier[ligne_dest][col_dest]=new Queen(ligne_depart,col_depart,damier[ligne_depart][col_depart]->getcouleur());
+		damier[(ligne_depart+ligne_dest)/2][(col_depart+col_dest)/2]=new Piece((ligne_depart+ligne_dest)/2,(col_depart+col_dest)/2,'v');
+		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 	}
+	//return 0;
 }
 bool Dame::nulle(){
-	//return (sans_capt==10);
+	return (Dame::sans_capt==10);
 }
 int Dame::termine(){
 //0:partie non encore termine//1: blanc gagne //2:noir gagne
+<<<<<<< HEAD
 bool noir=false;bool blanc=false;
 for (int i=0;i<10;i++)
 { for (int j=0;j<10;j++)
+=======
+/*bool noir=false;bool blanc=false;
+int i,j;
+while (i<10 && j<10 && (noir==false || blanc==false))
+>>>>>>> 3a51fa3faa23d6c88db7df0b1f1bbfb21801d2ed
 {
     if (damier[i][j]->getcouleur()=='b')
         blanc=true;
@@ -145,6 +184,17 @@ for (int i=0;i<10;i++)
         noir=true;
 
 }
+<<<<<<< HEAD
+=======
+if (i==10 && j==10)
+    return  0;
+    else if (noir==true)
+    return 2;
+    else if(noir==false)
+    return 1;
+else  ;*/
+return 0;
+>>>>>>> 3a51fa3faa23d6c88db7df0b1f1bbfb21801d2ed
 
 }
 if (noir == false && blanc ==true)
