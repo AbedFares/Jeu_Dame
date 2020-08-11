@@ -12,7 +12,7 @@ class Pion : public Piece
 		Pion(int,int,char);
 		virtual ~Pion();
 		void afficher();
-		int verif_dep(Piece* [10][10],int,int,int,int);
+		int verif_dep(Piece* [10][10],int,int,int,int);// 0:deplacement illegale // 1:deplacement normal // 2:deplacement avec capture //3:promotion sans capture // 4:promotion AVEC capture
         bool verif_capt(Piece* [10][10],int,int);
 		char getcouleur(){return couleur;};
 	protected:

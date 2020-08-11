@@ -95,6 +95,16 @@ int Dame::verif_dep(string depart,string dest){
 		cout<<"La case de depart est vide!"<<endl;
 		return 0;
 	}else {
+		//cout<<this->forced()<<endl;
+		if (this->forced() ){
+			if ( damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)!=2 &&
+			damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)!=4){
+				cout<<"il s'agit d'une capture !"<<endl;
+				return 0;
+			}else{
+				return damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest);
+			}
+		}
 		return damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest);
 	}
 	return 0;
@@ -120,8 +130,15 @@ bool Dame::verif_capt(string p){
 	}else{
 		ligne_depart=58 - (int) p[1];
 	}
-	return damier[col_depart][ligne_depart]->verif_capt(damier,col_depart,ligne_depart);
+	/*if ( damier[ligne_depart][col_depart]->verif_capt(damier,ligne_depart,col_depart) )
+		cout<<"verif_cap works"<<endl;*/
+	return damier[ligne_depart][col_depart]->verif_capt(damier,ligne_depart,col_depart);
 }
+/*bool Dame::verif_capt(int ligne,int colonne){
+	//if ( damier[ligne][colonne]->verif_capt(damier,ligne,colonne) )
+		//cout<<"verif_cap works"<<endl;
+	return damier[ligne][colonne]->verif_capt(damier,ligne,colonne);
+}*/
 void Dame::mise_jour(string depart,string dest){
 	int col_depart=(int) depart[0] - 97;
 	int ligne_depart;
@@ -138,24 +155,24 @@ void Dame::mise_jour(string depart,string dest){
 		ligne_dest=58 - (int) dest[1];
 	}
 	if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==1){
-		cout<<"dep norm du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		//cout<<"dep norm du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
 		Dame::sans_capt++;
 		damier[ligne_dest][col_dest]=damier[ligne_depart][col_depart];
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 	}else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==2){
-		cout<<"capture du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		//cout<<"capture du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
 		Dame::sans_capt=0;
 		damier[ligne_dest][col_dest]=damier[ligne_depart][col_depart];
 		damier[(ligne_depart+ligne_dest)/2][(col_depart+col_dest)/2]=new Piece((ligne_depart+ligne_dest)/2,(col_depart+col_dest)/2,'v');
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 		//return 2;
 	} else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==3){
-		cout<<"promo norm du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		//cout<<"promo norm du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
 		Dame::sans_capt++;
 		damier[ligne_dest][col_dest]=new Queen(ligne_depart,col_depart,damier[ligne_depart][col_depart]->getcouleur());
 		damier[ligne_depart][col_depart]=new Piece(ligne_depart,col_depart,'v');
 	} else if (damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)==4){
-		cout<<"promo avec capt du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
+		//cout<<"promo avec capt du :"<<damier[ligne_depart][col_depart]->getcouleur()<<endl;
 		Dame::sans_capt=0;
 		damier[ligne_dest][col_dest]=new Queen(ligne_depart,col_depart,damier[ligne_depart][col_depart]->getcouleur());
 		damier[(ligne_depart+ligne_dest)/2][(col_depart+col_dest)/2]=new Piece((ligne_depart+ligne_dest)/2,(col_depart+col_dest)/2,'v');
@@ -186,4 +203,24 @@ if(noir == true && blanc == false)
     return 2;
 if (noir==true && blanc==true)
     return 0;
+}
+
+bool Dame::forced(){
+	char tour;
+	if (Dame::nbre_coup % 2 == 0){
+		tour ='b';
+	}else{
+		tour='n';
+	}
+	for (int i=0;i<10;i++){
+		for (int j=0;j<10;j++){
+			if (damier[i][j]->getcouleur()==tour){
+				if (damier[i][j]->verif_capt(damier,i,j)){
+					//	cout<<i<<" "<<j<<endl;
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }

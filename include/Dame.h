@@ -16,12 +16,15 @@ class Dame
 		int verif_dep(string ,string ); // verifier si le deplacement est legeal
         bool test_format(string); // test le format de la chaine input
         bool verif_capt(string ); // verifier s'il s'agit d'une capture d'une position donne
+        //bool verif_capt(int,int ); // verifier s'il s'agit d'une capture d'une position donne
         void mise_jour(string,string); // fait le deplacement des pieces
         bool nulle(); // true : si partie est nulle // false : sinon
         int termine(); // retourner 0 si termine // 1: si blanc gagne // 2: si noir gagne
+        bool forced(); // retourner true si il y a une capture
 		static int get_nbcoup(){ return nbre_coup;};
 		static int get_sanscapt(){ return sans_capt;};
 		void increment(){ nbre_coup++;}; // augmente le nbre de coup par 1 chaque tour
+		void decrement(){ nbre_coup--;}
     protected:
 
 	private:
