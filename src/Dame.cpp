@@ -66,6 +66,25 @@ void Dame::afficher(){
 	cout<<"  "<<(char)221<<" a "<<(char)221<<" b "<<(char)221<<" c "<<(char)221<<" d "<<(char)221<<" e "<<(char)221<<" f "<<(char)221<<" g "<<(char)221<<" h "<<(char)221<<" i "<<(char)221<<" j "<<(char)221<<endl;
 }
 
+void Dame::interface_afficher(sf::RenderWindow* win){
+/*	sf::Texture PionBlanc;
+	if (PionBlanc.loadFromFile("Data/Pion_rouge_prep.png") == -1)
+		return;
+	sf::RectangleShape rectPionBlanc;
+	rectPionBlanc.setSize(sf::Vector2f(50,50));
+
+	rectPionBlanc.setTexture(&PionBlanc);*/
+
+	for (int i=0;i<10;i++)
+		for(int j=0;j<10;j++){
+			if (damier[i][j]->getcouleur()=='b'){
+				/*rectPionBlanc.setPosition(100+(j*50),100+(i*50));
+				win->draw(rectPionBlanc);*/
+				damier[i][j]->inter_afficher(win,i,j);
+			}
+		}
+}
+
 int Dame::verif_dep(string depart,string dest){
 // 0:deplacement illegale // 1:deplacement normal // 2:deplacement avec capture
 	int col_depart=(int) depart[0] - 97;

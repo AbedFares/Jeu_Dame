@@ -108,3 +108,14 @@ bool Queen::verif_capt(Piece* damier[10][10],int lig_dep,int col_dep){
 	}
 	return false;
 }
+
+void Queen::inter_afficher(sf::RenderWindow* win,int i,int j){
+	sf::Texture QueenBlanc;
+	if (QueenBlanc.loadFromFile("Data/dame_rouge_prep.png") == -1)
+		return;
+	sf::RectangleShape rectQueenBlanc;
+	rectQueenBlanc.setSize(sf::Vector2f(50,50));
+	rectQueenBlanc.setTexture(&QueenBlanc);
+	rectQueenBlanc.setPosition(100+(j*50),100+(i*50));
+	win->draw(rectQueenBlanc);
+}

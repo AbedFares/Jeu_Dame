@@ -15,6 +15,7 @@ class Pion : public Piece
 		int verif_dep(Piece* [10][10],int,int,int,int);// 0:deplacement illegale // 1:deplacement normal // 2:deplacement avec capture //3:promotion sans capture // 4:promotion AVEC capture
         bool verif_capt(Piece* [10][10],int,int);
 		char getcouleur(){return couleur;};
+		void inter_afficher(sf::RenderWindow*,int,int);
 	protected:
 
 	private:

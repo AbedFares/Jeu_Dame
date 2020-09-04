@@ -15,6 +15,7 @@ class Queen : public Piece
         int verif_dep(Piece* [10][10],int,int,int,int);
         bool verif_capt(Piece* [10][10],int,int);
         void afficher();
+        void inter_afficher(sf::RenderWindow*,int,int);
 	protected:
 
 	private:

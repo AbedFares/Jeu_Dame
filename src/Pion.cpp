@@ -123,3 +123,14 @@ bool Pion::verif_capt(Piece* damier[10][10],int lig_dep,int col_dep){
 	}
 	return false;
 }
+
+void Pion::inter_afficher(sf::RenderWindow* win,int i,int j){
+	sf::Texture PionBlanc;
+	if (PionBlanc.loadFromFile("Data/Pion_rouge_prep.png") == -1)
+		return;
+	sf::RectangleShape rectPionBlanc;
+	rectPionBlanc.setSize(sf::Vector2f(50,50));
+	rectPionBlanc.setTexture(&PionBlanc);
+	rectPionBlanc.setPosition(100+(j*50),100+(i*50));
+	win->draw(rectPionBlanc);
+}

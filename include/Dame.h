@@ -5,6 +5,7 @@
 #include "Pion.h"
 #include <iostream>
 #include <string>
+#include <SFML/Graphics.hpp>
 using namespace std;
 class Dame
 {
@@ -24,7 +25,8 @@ class Dame
 		static int get_nbcoup(){ return nbre_coup;};
 		static int get_sanscapt(){ return sans_capt;};
 		void increment(){ nbre_coup++;}; // augmente le nbre de coup par 1 chaque tour
-		void decrement(){ nbre_coup--;}
+		void decrement(){ nbre_coup--;};
+		void interface_afficher(sf::RenderWindow*);
     protected:
 
 	private:
