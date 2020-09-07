@@ -14,7 +14,7 @@ class Piece
 		virtual char getcouleur(){return couleur;};
 		virtual int verif_dep(Piece* damier[10][10],int a,int b,int c,int d){return 0;};
         virtual bool verif_capt(Piece* [10][10],int,int){return false;};
-        virtual void inter_afficher(sf::RenderWindow*,int,int){};
+        virtual void inter_afficher(char,sf::RenderWindow*,int,int){};
 
 	protected:
 		int rangee;

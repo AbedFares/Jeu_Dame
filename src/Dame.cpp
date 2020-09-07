@@ -77,11 +77,11 @@ void Dame::interface_afficher(sf::RenderWindow* win){
 
 	for (int i=0;i<10;i++)
 		for(int j=0;j<10;j++){
-			if (damier[i][j]->getcouleur()=='b'){
+
 				/*rectPionBlanc.setPosition(100+(j*50),100+(i*50));
 				win->draw(rectPionBlanc);*/
-				damier[i][j]->inter_afficher(win,i,j);
-			}
+				damier[i][j]->inter_afficher(damier[i][j]->getcouleur(),win,i,j);
+
 		}
 }
 

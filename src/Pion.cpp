@@ -124,13 +124,23 @@ bool Pion::verif_capt(Piece* damier[10][10],int lig_dep,int col_dep){
 	return false;
 }
 
-void Pion::inter_afficher(sf::RenderWindow* win,int i,int j){
-	sf::Texture PionBlanc;
+void Pion::inter_afficher(char c,sf::RenderWindow* win,int i,int j){
+	if (c=='b')
+    {sf::Texture PionBlanc;
 	if (PionBlanc.loadFromFile("Data/Pion_rouge_prep.png") == -1)
 		return;
 	sf::RectangleShape rectPionBlanc;
-	rectPionBlanc.setSize(sf::Vector2f(50,50));
+	rectPionBlanc.setSize(sf::Vector2f(40,40));
 	rectPionBlanc.setTexture(&PionBlanc);
-	rectPionBlanc.setPosition(100+(j*50),100+(i*50));
-	win->draw(rectPionBlanc);
+	rectPionBlanc.setPosition(105+(j*50),105+(i*50));
+	win->draw(rectPionBlanc);}
+	if (c=='n')
+    {sf::Texture PionNoir;
+	if (PionNoir.loadFromFile("Data/Pion_noir_prep.png") == -1)
+		return;
+	sf::RectangleShape rectPionNoir;
+	rectPionNoir.setSize(sf::Vector2f(40,40));
+	rectPionNoir.setTexture(&PionNoir);
+	rectPionNoir.setPosition(105+(j*50),105+(i*50));
+	win->draw(rectPionNoir);}
 }

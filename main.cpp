@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Dame.h"
 #include <SFML/Graphics.hpp>
+using namespace sf;
 using namespace std;
 
 int main()
@@ -16,6 +17,15 @@ int main()
 	rect.setSize(sf::Vector2f(700,700));
 	rect.setPosition(0,0);
 	rect.setTexture(&Background);
+
+    Texture board;
+    board.loadFromFile("Data/checkers_board.jpg");
+    if (board.loadFromFile("Data/checkers_board.jpg") == -1)
+		return 1;
+	RectangleShape rect_board;
+	rect_board.setSize(Vector2f(500,500));
+	rect_board.setPosition(100,100);
+	rect_board.setTexture(&board);
     while (window.isOpen())
     {
 		sf::Event event;
@@ -24,7 +34,9 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
+		window.clear();
 		window.draw(rect);
+		window.draw(rect_board);
 		d.interface_afficher(&window);
 		window.display();
 		d.afficher();
