@@ -67,7 +67,8 @@ int main()
 						while (d.verif_capt(q)&& (check==2 || check==4) ){
 							//cout<<"ici"<<endl;
 							cout<<"choisir une seule case"<<endl;
-							cin>>s;
+							s=d.mouseclick(xPressed,yPressed);
+							cout<<"s="<<s<<endl;
 							if (d.test_format(s)){
 								check=d.verif_dep(q,s);
 								if (check==2 || check==4){
