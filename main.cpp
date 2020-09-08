@@ -10,40 +10,44 @@ int main()
     d.initialiser();
 	sf::RenderWindow window(sf::VideoMode(700, 700), "Jeu de Dames");
 	//Images
-	sf::Texture Background;
-	if (Background.loadFromFile("Data/Checkers_background.jpg") == -1)
-		return 1;
-	sf::RectangleShape rect;
-	rect.setSize(sf::Vector2f(700,700));
-	rect.setPosition(0,0);
-	rect.setTexture(&Background);
+		bool var=false;
+		bool var2=false;
+		string ch1,ch2;
 
-    Texture board;
-    board.loadFromFile("Data/checkers_board.jpg");
-    if (board.loadFromFile("Data/checkers_board.jpg") == -1)
-		return 1;
-	RectangleShape rect_board;
-	rect_board.setSize(Vector2f(500,500));
-	rect_board.setPosition(100,100);
-	rect_board.setTexture(&board);
     while (window.isOpen())
     {
 		sf::Event event;
+		int xPressed=0;int yPressed=0;
+		int xReleased=0;int yReleased=0;
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			if (event.type == sf::Event::MouseButtonPressed){
+				if (event.mouseButton.button == sf::Mouse::Left){
+					xPressed=event.mouseButton.x;
+					yPressed=event.mouseButton.y;
+					var=!var;
+					var2=true;
+				}
+			}
 		}
 		window.clear();
-		window.draw(rect);
-		window.draw(rect_board);
 		d.interface_afficher(&window);
 		window.display();
-		d.afficher();
-		string ch1,ch2;
+		//d.afficher();
 		int verif=0;
-		while ( (d.termine()==0) && !d.nulle() ){
-			cin>>ch1>>ch2;
+		if ( (d.termine()==0) && !d.nulle() ){
+			if (var2){
+				if (var){
+					ch1=d.mouseclick(xPressed,yPressed);var2=false;
+				}
+				else{
+					ch2=d.mouseclick(xPressed,yPressed);var2=false;
+				}
+			}
+			cout<<ch1<<" "<<ch2<<endl;
+			//cin>>ch1>>ch2;
 			if (d.test_format(ch1) && d.test_format(ch2)){
 				//cout<<d.verif_dep(ch1,ch2)<<endl;
 				int check=d.verif_dep(ch1,ch2);
@@ -51,6 +55,9 @@ int main()
 					d.mise_jour(ch1,ch2);
 					d.increment();
 					d.afficher();
+					window.clear();
+					d.interface_afficher(&window);
+					window.display();
 					if (d.verif_capt(ch2) && ( check==2 || check==4 ) ){
 						//cout<<"hne"<<endl;
 						d.decrement();
@@ -75,9 +82,10 @@ int main()
 					}
 				}
 			}
+			/*window.clear();
+			d.interface_afficher(&window);
+			window.display();*/
 		}
-		window.clear();
-		window.display();
 	}
 	return 0;
 }

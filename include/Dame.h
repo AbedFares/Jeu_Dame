@@ -27,6 +27,7 @@ class Dame
 		void increment(){ nbre_coup++;}; // augmente le nbre de coup par 1 chaque tour
 		void decrement(){ nbre_coup--;};
 		void interface_afficher(sf::RenderWindow*);
+		string mouseclick(int,int);
     protected:
 
 	private:

@@ -67,21 +67,29 @@ void Dame::afficher(){
 }
 
 void Dame::interface_afficher(sf::RenderWindow* win){
-/*	sf::Texture PionBlanc;
-	if (PionBlanc.loadFromFile("Data/Pion_rouge_prep.png") == -1)
-		return;
-	sf::RectangleShape rectPionBlanc;
-	rectPionBlanc.setSize(sf::Vector2f(50,50));
-
-	rectPionBlanc.setTexture(&PionBlanc);*/
-
+	//Background
+	sf::Texture Background;
+	if (Background.loadFromFile("Data/Checkers_background.jpg") == -1)
+		return ;
+	sf::RectangleShape rect;
+	rect.setSize(sf::Vector2f(700,700));
+	rect.setPosition(0,0);
+	rect.setTexture(&Background);
+	//Board
+    sf::Texture board;
+    board.loadFromFile("Data/checkers_board.jpg");
+    if (board.loadFromFile("Data/checkers_board.jpg") == -1)
+		return ;
+	sf::RectangleShape rect_board;
+	rect_board.setSize(sf::Vector2f(500,500));
+	rect_board.setPosition(100,100);
+	rect_board.setTexture(&board);
+	////Drawing
+	win->draw(rect);
+	win->draw(rect_board);
 	for (int i=0;i<10;i++)
 		for(int j=0;j<10;j++){
-
-				/*rectPionBlanc.setPosition(100+(j*50),100+(i*50));
-				win->draw(rectPionBlanc);*/
-				damier[i][j]->inter_afficher(damier[i][j]->getcouleur(),win,i,j);
-
+			damier[i][j]->inter_afficher(damier[i][j]->getcouleur(),win,i,j);
 		}
 }
 
@@ -242,4 +250,82 @@ bool Dame::forced(){
 		}
 	}
 	return false;
+}
+
+string Dame::mouseclick(int x,int y){
+	string s;
+	if (x>=100 && x<=600){
+		if (x>=105 && x<=145){
+			s="a";
+		}
+		if (x>=155 && x<=195){
+			s="b";
+		}
+		if (x>=205 && x<=245){
+			s="c";
+		}
+		if (x>=255 && x<=295){
+			s="d";
+		}
+		if (x>=305 && x<=345){
+			s="e";
+		}
+		if (x>=355 && x<=395){
+			s="f";
+		}
+		if (x>=405 && x<=445){
+			s="g";
+		}
+		if (x>=455 && x<=495){
+			s="h";
+		}
+		if (x>=505 && x<=545){
+			s="i";
+		}
+		if (x>=555 && x<=595){
+			s="j";
+		}
+	}
+	else
+	{
+		s="invalid";
+		return s;
+	}
+	if (y>=100 && y<=600){
+		if (y>=105 && y<=145){
+			s+="10";
+		}
+		if (y>=155 && y<=195){
+			s+="9";
+		}
+		if (y>=205 && y<=245){
+			s+="8";
+		}
+		if (y>=255 && y<=295){
+			s+="7";
+		}
+		if (y>=305 && y<=345){
+			s+="6";
+		}
+		if (y>=355 && y<=395){
+			s+="5";
+		}
+		if (y>=405 && y<=445){
+			s+="4";
+		}
+		if (y>=455 && y<=495){
+			s+="3";
+		}
+		if (y>=505 && y<=545){
+			s+="2";
+		}
+		if (y>=555 && y<=595){
+			s+="1";
+		}
+	}else{
+		s="invalid";
+		return s;
+	}
+	cout<<s<<endl;
+	return s;
 }
