@@ -39,40 +39,40 @@ int Queen::verif_dep(Piece* damier[10][10],int l_dep,int c_dep,int l_dest,int c_
 			return 1;
 		}
 		if ((l_dest==l_dep+2) &&(c_dest==c_dep+2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest+1][c_dest+1]->getcouleur()=='b')){
+			&& (damier[l_dep+1][c_dep+1]->getcouleur()=='b')){
 				return 2;
 			}
 
         if ((l_dest==l_dep-2) &&(c_dest==c_dep+2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest-1][c_dest+1]->getcouleur()=='b')){
+			&& (damier[l_dep-1][c_dep+1]->getcouleur()=='b')){
 				return 2;
 			}
 		if ((l_dest==l_dep-2) &&(c_dest==c_dep-2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest-1][c_dest-1]->getcouleur()=='b')){//
+			&& (damier[l_dep-1][c_dep-1]->getcouleur()=='b')){//
 				return 2;
 			}
 					if ((l_dest==l_dep+2) &&(c_dest==c_dep-2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest+1][c_dest-1]->getcouleur()=='b')){
+			&& (damier[l_dep+1][c_dep-1]->getcouleur()=='b')){
 				return 2;
 			}
 	}else if (damier[l_dep][c_dep]->getcouleur()=='b'){if (((l_dest==l_dep+1) &&((c_dest==c_dep+1) || (c_dep==c_dest+1) ) && (damier[l_dest][c_dest]->getcouleur()=='v'))||((l_dest==l_dep-1) &&((c_dest==c_dep+1) || (c_dep==c_dest+1) ) && (damier[l_dest][c_dest]->getcouleur()=='v'))){
 			return 1;
 		}
 		if ((l_dest==l_dep+2) &&(c_dest==c_dep+2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest-1][c_dest-1]->getcouleur()=='n')){
+			&& (damier[l_dep+1][c_dep+1]->getcouleur()=='n')){
 				return 2;
 			}
 
         if ((l_dest==l_dep-2) &&(c_dest==c_dep+2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest+1][c_dest-1]->getcouleur()=='n')){
+			&& (damier[l_dep-1][c_dep-1]->getcouleur()=='n')){
 				return 2;
 			}
 		if ((l_dest==l_dep-2) &&(c_dest==c_dep-2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest+1][c_dest+1]->getcouleur()=='n')){//
+			&& (damier[l_dep-1][c_dep-1]->getcouleur()=='n')){//
 				return 2;
 			}
 					if ((l_dest==l_dep+2) &&(c_dest==c_dep-2 ) && (damier[l_dest][c_dest]->getcouleur()=='v')
-			&& (damier[l_dest-1][c_dest+1]->getcouleur()=='n')){
+			&& (damier[l_dep+1][c_dep-1]->getcouleur()=='n')){
 				return 2;
 
 
