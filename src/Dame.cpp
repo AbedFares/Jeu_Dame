@@ -119,7 +119,7 @@ int Dame::verif_dep(string depart,string dest){
 		ligne_dest=58 - (int) dest[1];
 	}
 	if (damier[ligne_depart][col_depart]->getcouleur()=='v'){
-		cout<<"La case de depart est vide!"<<endl;
+		//cout<<"La case de depart est vide!"<<endl;
 		return 0;
 	}else {
 		//cout<<this->forced()<<endl;

@@ -115,7 +115,7 @@ bool Pion::verif_capt(Piece* damier[10][10],int lig_dep,int col_dep){
 				return true;
 			}
 		}
-		if (lig_dep+2<=9 && col_dep+2<=9 && col_dep+2>=0 ){
+		if (lig_dep-2>=0 && col_dep+2<=9 && col_dep+2>=0 ){
 			if (damier[lig_dep][col_dep]->verif_dep(damier,lig_dep,col_dep,lig_dep-2,col_dep+2)==2 ){
 				return true;
 			}

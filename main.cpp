@@ -12,10 +12,13 @@ int main()
 	//Images
 		bool var=false;
 		bool var2=false;
+		bool var3=true;
 		string ch1,ch2;
-
+		string initial;
+		int check;
     while (window.isOpen())
     {
+    	//		cout<<"hne"<<endl;
 		sf::Event event;
 		int xPressed=0;int yPressed=0;
 		int xReleased=0;int yReleased=0;
@@ -35,57 +38,62 @@ int main()
 		window.clear();
 		d.interface_afficher(&window);
 		window.display();
-		//d.afficher();
-		int verif=0;
 		if ( (d.termine()==0) && !d.nulle() ){
-			if (var2){
-				if (var){
-					ch1=d.mouseclick(xPressed,yPressed);var2=false;
+			if (var3){
+				if (var2){
+					if (var){
+						ch1=d.mouseclick(xPressed,yPressed);var2=false;
+						cout<<ch1<<" ";
+					}
+					else{
+						ch2=d.mouseclick(xPressed,yPressed);var2=false;
+						cout<<ch2<<endl;
+					}
 				}
-				else{
-					ch2=d.mouseclick(xPressed,yPressed);var2=false;
-				}
-			}
-			cout<<ch1<<" "<<ch2<<endl;
-			//cin>>ch1>>ch2;
-			if (d.test_format(ch1) && d.test_format(ch2)){
-				//cout<<d.verif_dep(ch1,ch2)<<endl;
-				int check=d.verif_dep(ch1,ch2);
-				if ( check!=0 ){
-					d.mise_jour(ch1,ch2);
-					d.increment();
-					d.afficher();
-					window.clear();
-					d.interface_afficher(&window);
-					window.display();
-					if (d.verif_capt(ch2) && ( check==2 || check==4 ) ){
-						//cout<<"hne"<<endl;
-						d.decrement();
-						string q=ch2;
-						string s=ch1;
-						string aux=ch1;
-						while (d.verif_capt(q)&& (check==2 || check==4) ){
-							//cout<<"ici"<<endl;
-							cout<<"choisir une seule case"<<endl;
-							s=d.mouseclick(xPressed,yPressed);
-							cout<<"s="<<s<<endl;
-							if (d.test_format(s)){
-								check=d.verif_dep(q,s);
-								if (check==2 || check==4){
-									//cout<<"here"<<endl;
-									d.mise_jour(q,s);
-									d.afficher();
-									q=s;
-								}
-							}
-						}
+				if (d.test_format(ch1) && d.test_format(ch2)){
+					check=d.verif_dep(ch1,ch2);
+					if ( check!=0 ){
+						d.mise_jour(ch1,ch2);
 						d.increment();
+						d.afficher();
+						window.clear();
+						d.interface_afficher(&window);
+						window.display();
+						initial=ch2;
+						if (d.verif_capt(ch2) && ( check==2 || check==4 ) ){
+							cout<<"var3"<<var3<<endl;
+							d.decrement();
+							var3=false;
+						}
+					}
+				}
+			} else{
+				if (var2){
+					if (var){
+						ch1=d.mouseclick(xPressed,yPressed);var2=false;
+						cout<<"var3var"<<var3<<endl;
+						cout<<ch1<<" ";
+					}
+					else{
+						ch2=d.mouseclick(xPressed,yPressed);var2=false;
+						cout<<ch2<<endl;
+					}
+				}
+				if (d.test_format(ch1) && d.test_format(ch2) && (ch1==initial)){
+					check=d.verif_dep(ch1,ch2);
+					cout<<d.get_nbcoup()<<endl;
+					if (check==2 || check==4){
+						//cout<<"here"<<endl;
+						d.mise_jour(ch1,ch2);
+						window.clear();
+						d.interface_afficher(&window);
+						window.display();
+						d.afficher();
+						cout<<ch2<<d.verif_capt(ch2)<<endl;
+						if (d.verif_capt(ch2) ){initial=ch2;} else {var3=true;d.increment();}
 					}
 				}
 			}
-			/*window.clear();
-			d.interface_afficher(&window);
-			window.display();*/
 		}
 	}
 	return 0;
