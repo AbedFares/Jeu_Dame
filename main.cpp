@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Dame.h"
 #include <SFML/Graphics.hpp>
+#include <fstream>
 using namespace sf;
 using namespace std;
 
@@ -16,6 +17,8 @@ int main()
 		string ch1,ch2;
 		string initial;
 		int check;
+	fstream myfile;
+	myfile.open("Partie_Dames");
     while (window.isOpen())
     {
     	//		cout<<"hne"<<endl;
@@ -35,10 +38,10 @@ int main()
 				}
 			}
 		}
-		window.clear();
+		if ( (d.termine()==0) && !d.nulle() ){
+					window.clear();
 		d.interface_afficher(&window);
 		window.display();
-		if ( (d.termine()==0) && !d.nulle() ){
 			if (var3){
 				if (var2){
 					if (var){
@@ -54,6 +57,7 @@ int main()
 					check=d.verif_dep(ch1,ch2);
 					if ( check!=0 ){
 						d.mise_jour(ch1,ch2);
+						myfile<<ch1<<" "<<ch2<<"\n";
 						d.increment();
 						d.afficher();
 						window.clear();
@@ -85,6 +89,7 @@ int main()
 					if (check==2 || check==4){
 						//cout<<"here"<<endl;
 						d.mise_jour(ch1,ch2);
+						myfile<<ch1<<" "<<ch2<<"\n";
 						window.clear();
 						d.interface_afficher(&window);
 						window.display();
@@ -94,6 +99,9 @@ int main()
 					}
 				}
 			}
+		}
+		if ( (d.termine()!=0) || d.nulle() ){
+			d.endscreen(&window);
 		}
 	}
 	return 0;

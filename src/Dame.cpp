@@ -329,3 +329,33 @@ string Dame::mouseclick(int x,int y){
 	cout<<s<<endl;
 	return s;
 }
+void Dame::endscreen(sf::RenderWindow* win){
+	win->clear();
+	sf::Font arial;
+	if (!arial.loadFromFile("Data/Arial.ttf") )
+		return;
+	sf::Text text;
+	text.setFont(arial);
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::Red);
+	text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+	this->interface_afficher(win);
+	sf::Texture opac;
+	if (opac.loadFromFile("Data/opac.png") == -1)
+		return;
+		sf::RectangleShape rect_opac;
+	rect_opac.setSize(sf::Vector2f(700,700));
+	rect_opac.setTexture(&opac);
+	win->draw(rect_opac);
+	if (this->termine()==1){
+		text.setString("Blanc a gagne!!");
+	} else if (this->termine()==2){
+		text.setString("Noir a gagne");
+	}else if (this->nulle()){
+		text.setString("Partie Nulle");
+	}
+	text.setPosition(sf::Vector2f(300,350));
+	win->draw(text);
+	win->display();
+
+}

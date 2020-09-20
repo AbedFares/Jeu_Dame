@@ -28,6 +28,7 @@ class Dame
 		void decrement(){ nbre_coup--;};
 		void interface_afficher(sf::RenderWindow*);
 		string mouseclick(int,int);
+		void endscreen(sf::RenderWindow*);
     protected:
 
 	private:
