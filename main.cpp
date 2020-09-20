@@ -102,6 +102,7 @@ int main()
 		}
 		if ( (d.termine()!=0) || d.nulle() ){
 			d.endscreen(&window);
+			myfile.close();
 		}
 	}
 	return 0;
