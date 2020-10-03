@@ -136,6 +136,42 @@ int Dame::verif_dep(string depart,string dest){
 	}
 	return 0;
 }
+int Dame::verif_dep(string depart,int ligne_dest,int col_dest){
+// 0:deplacement illegale // 1:deplacement normal // 2:deplacement avec capture
+	int col_depart=(int) depart[0] - 97;
+	int ligne_depart;
+	if (depart.length()==3){
+		ligne_depart=0;
+	}else{
+		ligne_depart=58 - (int) depart[1];
+	}
+	char c=damier[ligne_depart][col_depart]->getcouleur();
+	if (Dame::nbre_coup % 2==0 && c=='n'){
+			cout<<"c'est le tour du blanc"<<endl;
+		return 0;
+	}
+	if (Dame::nbre_coup % 2==1 && c=='b'){
+		cout<<"c'est le tour du noir"<<endl;
+		return 0;
+	}
+	if (damier[ligne_depart][col_depart]->getcouleur()=='v'){
+		//cout<<"La case de depart est vide!"<<endl;
+		return 0;
+	}else {
+		//cout<<this->forced()<<endl;
+		if (this->forced() ){
+			if ( damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)!=2 &&
+			damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest)!=4){
+				cout<<"il s'agit d'une capture !"<<endl;
+				return 0;
+			}else{
+				return damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest);
+			}
+		}
+		return damier[ligne_depart][col_depart]->verif_dep(damier,ligne_depart,col_depart,ligne_dest,col_dest);
+	}
+	return 0;
+}
 bool Dame::test_format ( string ch)
 {
     if (ch.length()==2)
@@ -357,5 +393,38 @@ void Dame::endscreen(sf::RenderWindow* win){
 	text.setPosition(sf::Vector2f(300,350));
 	win->draw(text);
 	win->display();
-
+}
+void Dame::affichepossible(sf::RenderWindow* win,string ch1){
+	if (!this->test_format(ch1)){
+		return;
+	}
+	int col_depart=(int) ch1[0] - 97;
+	int ligne_depart;
+	if (ch1.length()==3){
+		ligne_depart=0;
+	}else{
+		ligne_depart=58 - (int) ch1[1];
+	}
+	if (damier[ligne_depart][col_depart]->getcouleur()=='v'){
+		return;
+	}
+	sf::Texture place_possible;
+	if (place_possible.loadFromFile("Data/place_possible.png")==-1){
+		return;
+	}
+	//win->clear();
+	this->interface_afficher(win);
+	sf::RectangleShape rect_poss;
+	rect_poss.setSize(sf::Vector2f(40,40));
+	rect_poss.setTexture(&place_possible);
+	for (int i=0;i<10;i++){
+		for (int j=0;j<10;j++){
+			if (this->verif_dep(ch1,i,j)!=0){
+				rect_poss.setPosition(105+(j*50),105+(i*50));
+				win->draw(rect_poss);
+			}
+		}
+	}
+	win->display();
+	return;
 }

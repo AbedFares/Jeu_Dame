@@ -17,8 +17,7 @@ int main()
 		string ch1,ch2;
 		string initial;
 		int check;
-	fstream myfile;
-	myfile.open("Partie_Dames");
+	ofstream myfile("Partie_Dames.txt");
     while (window.isOpen())
     {
     	//		cout<<"hne"<<endl;
@@ -53,11 +52,12 @@ int main()
 						cout<<ch2<<endl;
 					}
 				}
+				d.affichepossible(&window,ch1);
 				if (d.test_format(ch1) && d.test_format(ch2)){
 					check=d.verif_dep(ch1,ch2);
 					if ( check!=0 ){
 						d.mise_jour(ch1,ch2);
-						myfile<<ch1<<" "<<ch2<<"\n";
+						myfile<<ch1<<" "<<ch2<<endl;
 						d.increment();
 						d.afficher();
 						window.clear();
@@ -83,13 +83,14 @@ int main()
 						cout<<ch2<<endl;
 					}
 				}
+				d.affichepossible(&window,ch1);
 				if (d.test_format(ch1) && d.test_format(ch2) && (ch1==initial)){
 					check=d.verif_dep(ch1,ch2);
 					cout<<d.get_nbcoup()<<endl;
 					if (check==2 || check==4){
 						//cout<<"here"<<endl;
 						d.mise_jour(ch1,ch2);
-						myfile<<ch1<<" "<<ch2<<"\n";
+						myfile<<ch1<<" "<<ch2<<endl;
 						window.clear();
 						d.interface_afficher(&window);
 						window.display();

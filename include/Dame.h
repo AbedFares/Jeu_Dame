@@ -15,6 +15,7 @@ class Dame
 		void initialiser();
 		void afficher();
 		int verif_dep(string ,string ); // verifier si le deplacement est legeal
+		int verif_dep(string ,int,int ); // verifier si le deplacement est legeal
         bool test_format(string); // test le format de la chaine input
         bool verif_capt(string ); // verifier s'il s'agit d'une capture d'une position donne
         //bool verif_capt(int,int ); // verifier s'il s'agit d'une capture d'une position donne
@@ -29,6 +30,7 @@ class Dame
 		void interface_afficher(sf::RenderWindow*);
 		string mouseclick(int,int);
 		void endscreen(sf::RenderWindow*);
+		void affichepossible(sf::RenderWindow*,string);
     protected:
 
 	private:
